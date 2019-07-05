@@ -4,7 +4,7 @@
   "scripts": {
     "api": "nodemon ./backend/server.js",
     "ng": "ng",
-    "start": "concurrently -s first -k \"npm run api\" \"ng serve\"",
+    "start": "concurrently -s first -k \"ng serve\" \"wait-on http://localhost:4200 && npm run api\"",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -47,6 +47,7 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.4.3"
+    "typescript": "~3.4.3",
+    "wait-on": "^3.2.0"
   }
 }

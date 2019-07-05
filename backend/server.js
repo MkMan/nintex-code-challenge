@@ -35,4 +35,7 @@ app.get('/discounts', (req, res) => {
 });
 
 // Tell me you're alive please
-app.listen(port, () => console.log(`Nintex API listening on port ${port}!`));
+app.listen(port, () => {
+  console.log(`Nintex API listening on port ${port}!`);
+  console.log(`Open http://localhost:3000/index.html to start :)`);
+});
