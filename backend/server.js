@@ -1,19 +1,19 @@
 const express = require('express');
-const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 
 // config
 const port = 3000;
-const corsOptions = {
-  credentials: true,
-  origin: 'http://localhost:4200'
-};
 
 // server setup
 const app = express();
-app.use(cors(corsOptions));
 app.use(cookieParser());
+
+// allow cors
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+  next();
+});
 
 // serve static files like scenarios page
 app.use(express.static(path.join(__dirname, 'static')));
@@ -24,7 +24,7 @@ app.get('/products', (req, res) => {
 });
 
 app.get('/discounts', (req, res) => {
-  switch(req.cookies.discounts) {
+  switch (req.cookies.discounts) {
     case 'all':
       res.json(require('./responses/discounts/1.json'));
       return;
