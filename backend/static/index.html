@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mocked behaviours</title>
+  </head>
+  <body>
+    <h1>Mocked Scenarios</h1>
+    <p>
+      This page serves as a way to alter the mock API responses.
+      Clicking on a scenario will create a cookie. Later the Angular app with send this cookie with
+      its requests to the API (express in this case). Which will then return a JSON based on the cookie value.
+    </p>
+    <fieldset>
+      <legend>Different discount codes</legend>
+      <ul>
+        <li><a href="//localhost:4200/" onclick="setBehaviourCookie('discounts', 'all')">All codes are available</a></li>
+        <li><a href="//localhost:4200/" onclick="setBehaviourCookie('discounts', 'one')">One code is available</a></li>
+      </ul>
+    </fieldset>
+  </body>
+
+  <script type="text/javascript">
+    function setBehaviourCookie(name, value) {
+      document.cookie = `${name}=${value}; Domain=localhost`
+    }
+  </script>
+</html>
