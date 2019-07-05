@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, 'static')));
 
 // endpoints
 app.get('/products', (req, res) => {
-  // TODO
+  res.json(require('./responses/products/all.json'));
 });
 
 app.get('/discounts', (req, res) => {
