@@ -1,0 +1,19 @@
+@mixin heading-font {
+  font-family: 'Montserrat', sans-serif;
+}
+
+@mixin body-font {
+  font-family: 'Raleway', sans-serif;
+}
+
+@mixin h1-style {
+  @include heading-font;
+  font-size: $base_unit * 4;
+  font-weight: bold;
+}
+
+@mixin h2-style {
+  @include heading-font;
+  font-size: $base_unit * 3;
+  font-weight: bold;
+}

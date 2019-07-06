@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+@import './styles/index.scss';
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:400,700&display=swap');
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  @include body-font;
+  font-size: $base_unit * 2;
+}
+
+body {
+  max-width: $base_unit * 125;
+  margin: auto;
+}
+
+h1 {
+  @include h1-style;
+}
+
+h2 {
+  @include h2-style;
+}
