@@ -1,0 +1,66 @@
+@import '../../../styles/index.scss';
+
+// page wide styles
+.wrapper {
+  margin: $base_unit * 5;
+}
+
+.card {
+  @include nintex-card;
+}
+
+// products card
+.products {
+  margin-top: $base_unit * 4;
+}
+
+.products-table {
+  width: 100%;
+  margin-top: $base_unit * 2;
+
+  th {
+    text-align: left;
+  }
+  
+  td {
+    padding-top: $base_unit;
+  }
+}
+
+.product-qty {
+  width: $base_unit * 10;
+}
+
+// promotion card
+.promotion {
+  margin-top: $base_unit * 4;
+}
+
+.promotion-code-wrapper {
+  margin-top: $base_unit * 2;
+}
+
+.promotion-code-input {
+  min-width: $base_unit * 40;
+}
+
+.apply-promotion-btn {
+  margin-left: $base_unit * 2;
+  @include primary-btn;
+}
+
+// call to actions
+.cta-wrapper {
+  margin-top: $base_unit * 4;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.cta-confirm {
+  @include primary-btn;
+}
+
+.cta-cancel {
+  @include secondary-btn;
+}

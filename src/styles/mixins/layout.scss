@@ -1,0 +1,6 @@
+@mixin nintex-card {
+  padding: $base_unit * 3 $base_unit * 5;
+  background-color: #fff;
+  box-shadow: $base_unit / 4 $base_unit / 4 4px $Nin_Primary;
+  border-radius: $base_unit / 2 ;
+}

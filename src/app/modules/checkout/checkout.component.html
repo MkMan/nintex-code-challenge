@@ -1,0 +1,33 @@
+<div class="wrapper">
+  <h1>Checkout</h1>
+  <div class="card products">
+    <h2>Products</h2>
+    <table class="products-table">
+      <thead>
+        <th>Product</th>
+        <th>Unit price (AUD)</th>
+        <th>Qty</th>
+        <th>Subtotal (AUD)</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{product.name}}</td>
+          <td>{{product.unitPrice | currency}}</td>
+          <td><input class="product-qty" type="number" min="0" value="0"></td>
+          <td><span></span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card promotion">
+    <h2>Promotion</h2>
+    <div class="promotion-code-wrapper">
+      <input type="text" placeholder="Enter promotional code" class="promotion-code-input">
+      <button class="apply-promotion-btn">Apply</button>
+    </div>
+    <div class="cta-wrapper">
+      <button class="cta-confirm">Confirm</button>
+      <button class="cta-cancel">Cancel</button>
+    </div>
+  </div>
+</div>

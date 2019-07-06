@@ -12,6 +12,7 @@ app.use(cookieParser());
 // allow cors
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+  res.setHeader("Access-Control-Allow-Credentials", true);
   next();
 });
 
