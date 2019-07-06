@@ -7,7 +7,7 @@ import { Product } from './services/products/products.model';
 import { of } from 'rxjs';
 
 describe('CheckoutComponent', () => {
-  let component: CheckoutComponent;
+  let component; // stripped of type to test private members
   let mockProductsService: ProductsServiceMock;
   let fixture: ComponentFixture<CheckoutComponent>;
 

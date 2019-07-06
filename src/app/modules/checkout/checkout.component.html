@@ -12,7 +12,7 @@
       <tbody>
         <tr *ngFor="let product of products">
           <td>{{product.name}}</td>
-          <td>{{product.unitPrice | currency}}</td>
+          <td>{{product.price | currency}}</td>
           <td><input class="product-qty" type="number" min="0" value="0"></td>
           <td><span></span></td>
         </tr>

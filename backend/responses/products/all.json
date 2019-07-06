@@ -2,16 +2,16 @@
   {
     "id": "wf",
     "name": "Workflow",
-    "price": 19999
+    "price": 199.99
   },
   {
     "id": "docgen",
     "name": "Document Generation",
-    "price": 999
+    "price": 9.99
   },
   {
     "id": "form",
     "name": "Form",
-    "price": 9999
+    "price": 99.99
   }
 ]
