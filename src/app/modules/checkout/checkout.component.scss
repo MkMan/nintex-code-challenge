@@ -41,11 +41,11 @@
 }
 
 .promotion-code-input {
-  min-width: $base_unit * 40;
+  margin-right: $base_unit * 2;
+  min-width: $base_unit * 30;
 }
 
 .apply-promotion-btn {
-  margin-left: $base_unit * 2;
   @include primary-btn;
 }
 

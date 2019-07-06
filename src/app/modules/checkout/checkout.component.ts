@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from './services/products/products.model';
+import { ProductsService } from './services/products/products.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-checkout',
@@ -7,24 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckoutComponent implements OnInit {
 
-  public products = [
-    {
-      name: 'Workflow',
-      unitPrice: 199.99
-    },
-    {
-      name: 'Document Generation',
-      unitPrice: 9.99
-    },
-    {
-      name: 'Form',
-      unitPrice: 99.99
-    }
-  ];
+  constructor(private productsService: ProductsService) { }
 
-  constructor() { }
+  public products: Product[];
 
   ngOnInit() {
+    this.initialiseProducts();
+  }
+
+  private initialiseProducts(): void {
+    this.productsService.getProducts()
+      .pipe(take(1))
+      .subscribe(products => {
+        this.products = products;
+      });
   }
 
 }

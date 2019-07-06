@@ -15,9 +15,5 @@ export class AppComponent implements OnInit {
     this.http.get('//localhost:3000/discounts', {withCredentials: true}).subscribe(response => {
       console.log(response);
     });
-
-    this.http.get('//localhost:3000/products', {withCredentials: true}).subscribe(response => {
-      console.log(response);
-    });
   }
 }

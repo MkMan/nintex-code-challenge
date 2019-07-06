@@ -4,7 +4,7 @@
   "scripts": {
     "api": "nodemon ./backend/server.js",
     "ng": "ng",
-    "start": "concurrently -s first -k \"ng serve\" \"wait-on http://localhost:4200 && npm run api\"",
+    "start": "concurrently -s first \"ng serve\" \"npm run api\" \"wait-on http://localhost:4200 && open-cli --wait http://localhost:3000\"",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -44,6 +44,7 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
     "nodemon": "^1.19.1",
+    "open-cli": "^5.0.0",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
