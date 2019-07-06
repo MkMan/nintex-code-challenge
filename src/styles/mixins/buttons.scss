@@ -1,0 +1,35 @@
+$button_hover: darken($Nin_Primary, 8);
+
+@mixin btn-core {
+  padding: $base_unit $base_unit * 3;
+  border-radius: $base_unit / 4;
+  font-weight: bold;
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  &:hover {
+    background-color: $button_hover;
+    transition: background-color 300ms;
+  }
+}
+
+@mixin primary-btn {
+  @include btn-core;
+  border: 0;
+  background-color: $Nin_Primary;
+  color: #fff;
+}
+
+@mixin secondary-btn {
+  @include btn-core;
+  border: 1px solid $Nin_Primary;
+  background-color: #fff;
+  color: $Nin_Primary;
+
+  &:hover {
+    color: #fff;
+  }
+}
+

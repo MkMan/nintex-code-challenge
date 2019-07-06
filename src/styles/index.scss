@@ -1,0 +1,9 @@
+// This file will be consumed by all components.
+// it should not contain or import any css, only mixins and variables
+
+@import './variables.scss';
+@import './colors.scss';
+
+@import './mixins/fonts.scss';
+@import './mixins/layout.scss';
+@import './mixins/buttons';
