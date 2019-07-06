@@ -25,8 +25,8 @@ describe('ProductsService', () => {
     let request: TestRequest;
 
     beforeEach(() => {
-      service.getProducts();
-      request = httpMock.expectOne('//locahlost:3000/products');
+      service.getProducts().subscribe();
+      request = httpMock.expectOne('//localhost:3000/products');
     });
 
     afterEach(() => {
@@ -35,7 +35,7 @@ describe('ProductsService', () => {
     });
 
     it('should call the right endpoint', () => {
-      expect(request.request.url).toEqual('//locahlost:3000/products');
+      expect(request.request.url).toEqual('//localhost:3000/products');
     });
 
     it('should make a GET call', () => {
