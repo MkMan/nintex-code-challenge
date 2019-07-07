@@ -1,3 +1,41 @@
 {
-  "message": "none"
+  "allowMultiple": false,
+  "promotions": [
+    {
+      "type": "total",
+      "code": "RRD4D32",
+      "rules": {
+        "minimum": 1000,
+        "discountAmount": 10
+      }
+    },
+    {
+      "type": "total",
+      "code": "44F4T11",
+      "rules": {
+        "minimum": 1500,
+        "discountAmount": 15
+      }
+    },
+    {
+      "type": "product",
+      "code": "FF9543D1",
+      "rules": {
+        "target": "docgen",
+        "applyTo": "docgen",
+        "minimum": 10,
+        "newPrice": 8.99
+      }
+    },
+    {
+      "type": "product",
+      "code": "YYGWKJD",
+      "rules": {
+        "target": "wf",
+        "applyTo": "form",
+        "minimum": 1,
+        "newPrice": 89.99
+      }
+    }
+  ]
 }
