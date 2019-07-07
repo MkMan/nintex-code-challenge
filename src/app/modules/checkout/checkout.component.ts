@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from './services/products/products.model';
 import { ProductsService } from './services/products/products.service';
 import { take } from 'rxjs/operators';
-import { Order } from './order.mode';
+import { Order } from './services/order/order.model';
 
 @Component({
   selector: 'app-checkout',
