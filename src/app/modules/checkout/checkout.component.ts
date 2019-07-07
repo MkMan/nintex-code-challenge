@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from './services/products/products.model';
 import { ProductsService } from './services/products/products.service';
 import { take } from 'rxjs/operators';
+import { Order } from './order.mode';
 
 @Component({
   selector: 'app-checkout',
@@ -13,6 +14,9 @@ export class CheckoutComponent implements OnInit {
   constructor(private productsService: ProductsService) { }
 
   public products: Product[];
+  public order: Order = {
+    products: []
+  };
 
   ngOnInit() {
     this.initialiseProducts();
