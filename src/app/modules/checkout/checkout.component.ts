@@ -37,6 +37,7 @@ export class CheckoutComponent implements OnInit {
 
   public onQtyChange(id: string, qty: string): void {
     this.order = this.orderService.updateOrder(id, parseInt(qty, 10));
+    this.orderTotal = this.orderService.getOrderTotal(this.products);
   }
 
   public getSubtotalForId(id: string): number {
@@ -52,7 +53,7 @@ export class CheckoutComponent implements OnInit {
 
   public applyPromoCode(): void {
     if (this.promoCode && this.promotionService.isPromoValid(this.promoCode, this.order, this.products)) {
-      this.orderTotal = this.promotionService.getUpdatedOrderTotal(this.promoCode, this.order, this.products);
+      this.orderTotal = this.promotionService.getUpdatedOrderTotal(this.promoCode, this.products);
     }
   }
 

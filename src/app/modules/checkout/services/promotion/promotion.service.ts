@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { PromotionResponse, PromoType } from './promotion.model';
+import { OrderService } from '../order/order.service';
 import { Order } from '../order/order.model';
 import { Product } from '../products/products.model';
+import { PromotionResponse, PromoType, Promotion, OrderTotalDiscountRules, ProductDiscountRules } from './promotion.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PromotionService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private orderService: OrderService
+  ) { }
 
   private promotionResponse: PromotionResponse;
   private availablePromotions: string[] = [];
@@ -30,14 +34,12 @@ export class PromotionService {
     }
 
     const promoType = this.getPromoType(promoCode);
-    const promotionRules = this.promotionResponse.promotions.find(promotion => {
-      return promotion.code === promoCode;
-    }).rules;
+    const promotionRules = this.getPromoRules(promoCode);
     const minimumAmount = promotionRules.minimum;
 
     switch (promoType) {
       case 'total':
-        return this.getOrderTotal(order, products) >= minimumAmount;
+        return this.orderService.getOrderTotal(products) >= minimumAmount;
       case 'product':
         const targetProductId = promotionRules.target;
         const targetProduct = order.products.find(orderLine => orderLine.id === targetProductId);
@@ -45,38 +47,50 @@ export class PromotionService {
     }
   }
 
-  public getUpdatedOrderTotal(promoCode: string, order: Order, products: Product[]): number {
+  public getUpdatedOrderTotal(promoCode: string, products: Product[]): number {
     const promoType = this.getPromoType(promoCode);
+
     switch (promoType) {
       case 'total':
-        const discountAmount = this.promotionResponse.promotions.find(promotion => promotion.code === promoCode).rules.discountAmount;
-        return this.getOrderTotal(order, products) * (100 - discountAmount) / 100;
+        const discountAmount = this.getPromoRules(promoCode).discountAmount;
+        return this.orderService.getOrderTotal(products) * (100 - discountAmount) / 100;
+
       case 'product':
-        const updatedProducts = [...products];
+        const updatedProducts = this.cloneArray(products) as Product[];
+
         updatedProducts.map(product => {
-          if (product.id === this.promotionResponse.promotions.find(promotion => promotion.code === promoCode).rules.applyTo) {
-            product.price = this.promotionResponse.promotions.find(promotion => promotion.code === promoCode).rules.newPrice;
+          if (product.id === this.getPromoRules(promoCode).applyTo) {
+            product.price = this.getPromoRules(promoCode).newPrice;
           }
         });
-        return this.getOrderTotal(order, updatedProducts);
-
+        return this.orderService.getOrderTotal(updatedProducts);
     }
   }
 
-  private getPromoType(promoCode: string): PromoType {
-    return this.promotionResponse.promotions.find((promotion) => {
-      return promotion.code === promoCode;
-    }).type;
-  }
 
-  private getOrderTotal(order: Order, products: Product[]): number {
-    let total = 0;
+  // helper functions
 
-    order.products.forEach(orderLine => {
-      const productPrice = products.find(product => product.id === orderLine.id).price;
-      total += (orderLine.qty * productPrice);
+  private cloneArray(array: object[]): object[] {
+    const clonedArray = [];
+
+    array.forEach(object => {
+      clonedArray.push(Object.assign({}, object));
     });
 
-    return total;
+    return clonedArray;
+  }
+
+  private getPromoRules(promoCode: string): OrderTotalDiscountRules | ProductDiscountRules {
+    return this.getPromo(promoCode).rules;
+  }
+
+  private getPromoType(promoCode: string): PromoType {
+    return this.getPromo(promoCode).type;
+  }
+
+  private getPromo(promoCode: string): Promotion {
+    return this.promotionResponse.promotions.find(promotion => {
+      return promotion.code === promoCode;
+    });
   }
 }

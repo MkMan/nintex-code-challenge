@@ -37,8 +37,10 @@
               (click)="applyPromoCode()">Apply
       </button>
     </div>
-    <div>
-      Total: {{ orderTotal | currency }}
+    <div class="order-total-wrapper">
+      <h3>
+        Total: 
+      </h3>{{ orderTotal | currency }}
     </div>
     <div class="cta-wrapper">
       <button class="cta-confirm">Confirm</button>
