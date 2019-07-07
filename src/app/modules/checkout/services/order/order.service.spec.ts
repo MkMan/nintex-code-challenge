@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { OrderService } from './order.service';
 import { Order } from './order.model';
+import { Product } from '../products/products.model';
 
 describe('OrderService', () => {
   let service; // stripped of its type to access/manipulate the private variable
@@ -108,6 +109,36 @@ describe('OrderService', () => {
 
       // assert
       expect(actualReturn).toEqual(expectedReturn);
+    });
+  });
+
+  describe('#getOrderTotal', () => {
+    beforeEach(() => {
+      const mockCurrentOrder: Order = {
+        products: [
+          {
+            id: 'X1',
+            qty: 3
+          }
+        ]
+      };
+      service.order = mockCurrentOrder;
+    });
+
+    it('should return the order total', () => {
+      const mockProductList: Product[] = [
+        {
+          id: 'X1',
+          price: 100,
+          name: 'anything 1'
+        },
+        {
+          id: 'X2',
+          price: 200,
+          name: 'anything 2'
+        }
+      ];
+      expect(service.getOrderTotal(mockProductList)).toEqual(300);
     });
   });
 });
