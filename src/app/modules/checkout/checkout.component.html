@@ -13,8 +13,14 @@
         <tr *ngFor="let product of products">
           <td>{{product.name}}</td>
           <td>{{product.price | currency}}</td>
-          <td><input class="product-qty" type="number" min="0" value="0"></td>
-          <td><span></span></td>
+          <td>
+            <input  class="product-qty" 
+                    type="number" 
+                    min="0" 
+                    value="0" 
+                    (change)="onQtyChange(product.id, $event.target.value)">
+          </td>
+          <td><span>{{ getSubtotalForId(product.id) | currency }}</span></td>
         </tr>
       </tbody>
     </table>

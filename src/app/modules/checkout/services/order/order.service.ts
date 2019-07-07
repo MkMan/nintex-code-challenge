@@ -8,7 +8,9 @@ export class OrderService {
 
   constructor() { }
 
-  private order: Order;
+  private order: Order = {
+    products: []
+  };
 
   public updateOrder(id: string, qty: number): Order {
     let productIndex: number;
