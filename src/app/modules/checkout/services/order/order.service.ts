@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Order } from './order.model';
+import { Product } from '../products/products.model';
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +39,16 @@ export class OrderService {
     }
 
     return this.order;
+  }
+
+  public getOrderTotal(products: Product[]): number {
+    let total = 0;
+
+    this.order.products.forEach(orderLine => {
+      const productPrice = products.find(product => product.id === orderLine.id).price;
+      total += (orderLine.qty * productPrice);
+    });
+
+    return total;
   }
 }

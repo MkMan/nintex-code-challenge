@@ -28,8 +28,19 @@
   <div class="card promotion">
     <h2>Promotion</h2>
     <div class="promotion-code-wrapper">
-      <input type="text" placeholder="Enter promotional code" class="promotion-code-input">
-      <button class="apply-promotion-btn">Apply</button>
+      <input  #promoCode
+              type="text"
+              placeholder="Enter promotional code"
+              class="promotion-code-input"
+              (change)="onPromoCodeChange()">
+      <button class="apply-promotion-btn" 
+              (click)="applyPromoCode()">Apply
+      </button>
+    </div>
+    <div class="order-total-wrapper">
+      <h3>
+        Total: 
+      </h3>{{ orderTotal | currency }}
     </div>
     <div class="cta-wrapper">
       <button class="cta-confirm">Confirm</button>

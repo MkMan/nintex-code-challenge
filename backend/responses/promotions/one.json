@@ -1,0 +1,13 @@
+{
+  "allowMultiple": false,
+  "promotions": [
+    {
+      "type": "total",
+      "code": "RRD4D32",
+      "rules": {
+        "minimum": 1000,
+        "discountAmount": 10
+      }
+    }
+  ]
+}

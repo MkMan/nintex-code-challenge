@@ -49,6 +49,10 @@
   @include primary-btn;
 }
 
+.order-total-wrapper {
+  margin-top: $base_unit * 4;
+}
+
 // call to actions
 .cta-wrapper {
   margin-top: $base_unit * 4;
