@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs/operators';
 
 import { ProductsService } from './services/products/products.service';
+import { PromotionService } from './services/promotion/promotion.service';
 import { OrderService } from './services/order/order.service';
 
 import { Order } from './services/order/order.model';
@@ -16,7 +17,8 @@ export class CheckoutComponent implements OnInit {
 
   constructor(
     private productsService: ProductsService,
-    private orderService: OrderService
+    private promotionService: PromotionService,
+    private orderService: OrderService,
   ) { }
 
   public products: Product[];
@@ -26,6 +28,7 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit() {
     this.initialiseProducts();
+    this.promotionService.getPromotionCode();
   }
 
   public onQtyChange(id: string, qty: string): void {

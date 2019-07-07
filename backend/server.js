@@ -24,13 +24,13 @@ app.get('/products', (req, res) => {
   res.json(require('./responses/products/all.json'));
 });
 
-app.get('/discounts', (req, res) => {
-  switch (req.cookies.discounts) {
+app.get('/promotions', (req, res) => {
+  switch (req.cookies.promotions) {
     case 'all':
-      res.json(require('./responses/discounts/1.json'));
+      res.json(require('./responses/promotions/1.json'));
       return;
     case 'one':
-      res.json(require('./responses/discounts/2.json'));
+      res.json(require('./responses/promotions/2.json'));
       return;
   }
 });
