@@ -46,4 +46,9 @@ describe('ProductsService', () => {
       expect(request.request.withCredentials).toEqual(true);
     });
   });
+
+  // TODO: add more tests.
+  // I've been fairly busy recently so I didn't get the chance to finish the tests for this file.
+  // I've included enough tests to demonstrate my experience writing them.
+  // If time permits I will add more soon.
 });
